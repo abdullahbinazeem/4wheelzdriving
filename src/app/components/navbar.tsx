@@ -5,6 +5,7 @@ import Image from "next/image";
 import Container from "@/components/container";
 
 import { Menu } from "lucide-react";
+import Link from "next/link";
 
 const navItems = [
   {
@@ -13,15 +14,15 @@ const navItems = [
   },
   {
     name: "Driving Lessons",
-    url: "/",
+    url: "/lessons",
   },
   {
     name: "Packages",
-    url: "/",
+    url: "/packages",
   },
   {
     name: "About",
-    url: "/",
+    url: "/about",
   },
   {
     name: "Policy",
@@ -32,7 +33,7 @@ const navItems = [
 const Navbar = () => {
   return (
     <Container>
-      <div className="flex justify-between items-center py-4">
+      <div className="flex items-center justify-between py-6">
         <Image
           src="/assets/logo.jpg"
           alt="logo"
@@ -40,24 +41,24 @@ const Navbar = () => {
           width={200}
           height={200}
         />
-        <div className="hidden lg:flex gap-8 xl:gap-11">
+        <div className="hidden gap-8 lg:flex xl:gap-11">
           {navItems.map((item) => (
-            <a
-              className="text-gray-700 font-semibold xl:font-bold xl:text-lg"
+            <Link
+              className="font-semibold text-gray-800 after:block after:h-[2px] after:w-[100%] after:scale-0 after:bg-primary after:transition-all hover:after:scale-110 xl:text-lg xl:font-bold"
               href={item.url}
             >
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
-        <a
-          href="/"
-          className="hidden lg:block bg-primary px-6 xl:px-10 py-3 rounded-md tracking-widest"
+        <Link
+          href="/login"
+          className="hidden rounded-md bg-primary px-6 py-3 tracking-widest transition-all hover:scale-110 lg:block xl:px-8"
         >
-          <p className="text-lg xl:text-xl text-white">Login</p>
-        </a>
+          <p className="text-lg text-white ">Login</p>
+        </Link>
         <div
-          className="lg:hidden block cursor-pointer"
+          className="block cursor-pointer lg:hidden"
           onClick={() => {
             console.log("click");
           }}
