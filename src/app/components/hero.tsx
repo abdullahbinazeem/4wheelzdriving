@@ -39,7 +39,7 @@ const Hero = () => {
           />
         </div>
         <Container>
-          <div className="flex h-full flex-col justify-center gap-y-5 pt-[25vh] lg:gap-y-8">
+          <div className="flex h-full flex-col justify-center gap-y-5 pt-20 lg:gap-y-8 lg:pt-[25vh]">
             <h2 className="relative text-lg font-semibold tracking-wider text-primary after:absolute after:left-[-220px] after:top-[50%] after:hidden after:h-[4px] after:w-[200px] after:rounded-full after:bg-primary sm:text-2xl lg:ml-10 lg:text-3xl after:lg:block">
               Experience The Art of Driving
             </h2>
@@ -48,7 +48,7 @@ const Hero = () => {
               <br />
               Driving School
             </h1>
-            <p className="font-light text-gray-300 sm:text-xl lg:text-2xl">
+            <p className="font-light text-slate-300 sm:text-xl lg:text-2xl">
               Victoria, British Columbia
             </p>
             <div className="mt-5 flex flex-col gap-5 sm:flex-row">
@@ -74,10 +74,10 @@ const Hero = () => {
                   height={200}
                   className="w-28 lg:w-32 "
                 ></Image>
-                <h1 className="mt-5 text-xl font-bold text-gray-800 after:bottom-0 after:my-4 after:block after:h-[3px] after:w-20 after:rounded-xl after:bg-primary lg:text-2xl">
+                <h1 className="mt-5 text-xl font-bold text-slate-800 after:bottom-0 after:my-4 after:block after:h-[3px] after:w-20 after:rounded-xl after:bg-primary lg:text-2xl">
                   {item.title}
                 </h1>
-                <p className="shortener mt-7 text-sm font-light text-gray-500 lg:text-base">
+                <p className="shortener mt-7 text-sm font-light text-slate-500 lg:text-base">
                   {item.description}
                 </p>
               </div>

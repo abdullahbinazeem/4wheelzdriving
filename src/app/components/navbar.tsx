@@ -45,7 +45,7 @@ const Navbar = () => {
           {navItems.map((item) => (
             <Link
               key={item.name}
-              className="font-semibold text-gray-800 after:block after:h-[2px] after:w-[100%] after:scale-0 after:bg-primary after:transition-all hover:after:scale-110 xl:text-lg xl:font-bold"
+              className="font-semibold text-slate-800 after:block after:h-[2px] after:w-[100%] after:scale-0 after:bg-primary after:transition-all hover:after:scale-110 xl:text-lg xl:font-bold"
               href={item.url}
             >
               {item.name}
