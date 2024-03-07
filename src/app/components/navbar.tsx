@@ -38,8 +38,8 @@ const Navbar = () => {
           src="/assets/logo.jpg"
           alt="logo"
           className="w-36 xl:w-44"
-          width={200}
-          height={200}
+          width={176}
+          height={63.25}
         />
         <div className="hidden gap-8 lg:flex xl:gap-11">
           {navItems.map((item) => (
