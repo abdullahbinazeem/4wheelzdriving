@@ -63,7 +63,10 @@ const Hero = () => {
 
           <div className="mt-[10vh] grid w-full gap-6 align-middle sm:px-10 md:grid-cols-2 lg:grid-cols-3">
             {suggestedService.map((item) => (
-              <div className="rounded-md bg-white p-9 shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.05),_10px_10px_30px_4px_rgba(255,122,0,.05)]">
+              <div
+                key={item.title}
+                className="rounded-md bg-white p-9 shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.05),_10px_10px_30px_4px_rgba(255,122,0,.05)]"
+              >
                 <Image
                   src={item.imageUrl}
                   alt="driving lessons"
