@@ -5,7 +5,7 @@ import React from "react";
 const About = () => {
   return (
     <Container className="relative">
-      <div className="absolute left-[50%] top-[-20%] z-[-2]  h-[160%] w-[50%] bg-slate-200" />
+      <div className="absolute left-0 top-[60%] z-[-2] h-[50%] w-full bg-slate-200  lg:left-[50%] lg:top-[-20%] lg:h-[120%] lg:w-[50%]" />
       <div className="flex min-h-[80vh] flex-col gap-x-4 gap-y-20 py-40 lg:flex-row">
         <div className="flex-1">
           <h1 className="inline-block text-3xl font-bold tracking-wide text-slate-900 before:mb-4 before:block before:h-[5px] before:w-[40%] before:bg-primary lg:text-4xl">
