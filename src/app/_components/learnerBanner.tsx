@@ -29,8 +29,11 @@ const LearnerBanner = () => {
             />
           </div>
           <ul className="mt-12 flex flex-col gap-y-6">
-            {topics.map((topic) => (
-              <li className="flex items-center gap-4  font-light lg:text-lg">
+            {topics.map((topic, i) => (
+              <li
+                key={i}
+                className="flex items-center gap-4  font-light lg:text-lg"
+              >
                 <ArrowBigUpDash
                   size={40}
                   strokeWidth={1.5}
