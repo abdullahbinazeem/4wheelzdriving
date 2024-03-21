@@ -6,8 +6,8 @@ import { Play } from "lucide-react";
 const Training = () => {
   return (
     <Container>
-      <div className="py-40 ">
-        <h1 className="  inline-block text-3xl font-bold tracking-wide text-slate-900 lg:text-4xl ">
+      <div className="py-40">
+        <h1 className="inline-block text-3xl font-bold tracking-wide text-slate-900 lg:text-4xl ">
           1 on 1 TRAINING
         </h1>
         <div className="mt-16 flex flex-col gap-x-20 gap-y-8 lg:flex-row">

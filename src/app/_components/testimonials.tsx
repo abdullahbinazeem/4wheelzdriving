@@ -36,7 +36,7 @@ const Testimonials = () => {
 
   return (
     <Container className="relative">
-      <div className="min-h-[80vh]  py-40 lg:flex-row">
+      <div className=" py-28 lg:flex-row">
         <h1 className="inline-block text-3xl font-bold tracking-wide  text-slate-900  lg:text-4xl">
           What Our Students Say
         </h1>
