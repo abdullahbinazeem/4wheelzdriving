@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Navbar from "./navbar";
 import Container from "@/components/container";
+import Link from "next/link";
 
 const suggestedService = [
   {
@@ -52,12 +53,18 @@ const Hero = () => {
               Victoria, British Columbia
             </p>
             <div className="mt-5 flex flex-col gap-5 sm:flex-row">
-              <a className="cursor-pointer self-start rounded-md border-2 border-primary bg-primary px-10 py-4 font-semibold text-white transition-all hover:-translate-y-2 hover:scale-105 md:text-lg">
+              <Link
+                href="bookings"
+                className="cursor-pointer self-start rounded-md border-2 border-primary bg-primary px-10 py-4 font-semibold text-white transition-all hover:-translate-y-2 hover:scale-105 md:text-lg"
+              >
                 Book Now
-              </a>
-              <a className="cursor-pointer self-start rounded-md border-2 border-primary px-10 py-4 font-semibold text-primary transition-all hover:-translate-y-2 hover:scale-105 md:text-lg">
+              </Link>
+              <Link
+                href="about"
+                className="cursor-pointer self-start rounded-md border-2 border-primary px-10 py-4 font-semibold text-primary transition-all hover:-translate-y-2 hover:scale-105 md:text-lg"
+              >
                 Learn More
-              </a>
+              </Link>
             </div>
           </div>
 

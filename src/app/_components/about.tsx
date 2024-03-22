@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Container from "@/components/container";
 import React from "react";
+import Link from "next/link";
 
 const About = () => {
   return (
@@ -21,6 +22,14 @@ const About = () => {
             drivers. We understand that each student is different and our aim is
             to cater them with the best safe driving skills.
           </p>
+          <div className="mt-8 inline-block rounded-sm bg-primary p-3 transition-all  hover:translate-x-[5%] hover:scale-110">
+            <Link
+              href={"/about"}
+              className="  font-medium tracking-wider text-white"
+            >
+              Learn about us
+            </Link>
+          </div>
         </div>
         <div className="relative aspect-video flex-1 overflow-hidden rounded-2xl">
           <Image

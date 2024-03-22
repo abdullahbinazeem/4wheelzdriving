@@ -41,14 +41,14 @@ const ContactForm = () => {
             method="POST"
             className="px-8 py-10"
           >
-            <div className="mb-4 flex w-full flex-col  items-start gap-x-12 md:flex-row">
+            <div className="mb-6 flex w-full flex-col  items-start gap-x-6 md:flex-row">
               <div className="w-full flex-1">
-                <h2 className="mb-2 w-full font-medium md:text-lg">
+                <h2 className="mb-2 w-full font-medium ">
                   Name{" "}
                   <span className="text-2xl font-bold text-red-500">*</span>
                 </h2>
                 <input
-                  className="focus:shadow-outline box-border w-full rounded-lg p-3 text-gray-900 focus:outline-none"
+                  className="focus:shadow-outline box-border w-full rounded-lg p-3 text-sm text-gray-900 focus:outline-none"
                   name="first name"
                   type="text"
                   placeholder="Name"
@@ -56,12 +56,12 @@ const ContactForm = () => {
                 />
               </div>
               <div className="w-full flex-1">
-                <h2 className="mb-2 font-medium md:text-lg">
+                <h2 className="mb-2 font-medium ">
                   Email{" "}
                   <span className="text-2xl font-bold text-red-500">*</span>
                 </h2>
                 <input
-                  className="focus:shadow-outline box-border w-full rounded-lg p-3 text-gray-900 focus:outline-none"
+                  className="focus:shadow-outline box-border w-full rounded-lg p-3 text-sm text-gray-900 focus:outline-none"
                   name="email"
                   type="email"
                   placeholder="Email"
@@ -80,14 +80,14 @@ const ContactForm = () => {
               ></input>
             </div>
             <div className="mt-4 flex w-full grow flex-col self-stretch md:mt-0">
-              <h2 className="mb-2 font-medium md:text-lg">
+              <h2 className="mb-2 font-medium ">
                 Message
                 <span className="text-2xl font-bold text-red-500">*</span>
               </h2>
               <textarea
                 name="message"
                 placeholder="Message"
-                className="focus:shadow-outline h-full max-h-[300px] min-h-[100px] w-full rounded-lg p-3 text-gray-900 focus:outline-none"
+                className="focus:shadow-outline h-full max-h-[300px] min-h-[100px] w-full rounded-lg p-3 text-sm text-gray-900 focus:outline-none"
                 required
               ></textarea>
             </div>
