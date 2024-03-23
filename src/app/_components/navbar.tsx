@@ -13,7 +13,7 @@ const navItems = [
     url: "/",
   },
   {
-    name: "Driving Lessons",
+    name: `Driving Lessons`,
     url: "/lessons",
   },
   {
@@ -47,7 +47,7 @@ const Navbar = () => {
           {navItems.map((item) => (
             <Link
               key={item.name}
-              className="font-medium text-slate-800 after:block after:h-[2px] after:w-[100%] after:scale-0 after:bg-primary after:transition-all hover:after:scale-110 xl:text-lg xl:font-semibold"
+              className="whitespace-pre-wrap  font-medium text-slate-800 after:block after:h-[2px] after:w-[100%] after:scale-0 after:bg-primary after:transition-all hover:after:scale-110 xl:text-lg xl:font-semibold"
               href={item.url}
             >
               {item.name}

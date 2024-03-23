@@ -5,8 +5,8 @@ import React from "react";
 const page = () => {
   return (
     <div>
-      <SecondaryHeader title="School Policies" />
-      Policy Page!
+      <SecondaryHeader title={`Packages`} />
+      Driving Packages
       <Footer />
     </div>
   );

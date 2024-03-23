@@ -44,7 +44,7 @@ const Hero = () => {
             <h2 className="relative text-lg font-semibold tracking-wider text-primary after:absolute after:left-[-220px] after:top-[50%] after:hidden after:h-[4px] after:w-[200px] after:rounded-full after:bg-primary sm:text-2xl lg:ml-10 lg:text-3xl after:lg:block">
               Experience The Art of Driving
             </h2>
-            <h1 className="text-4xl font-extrabold tracking-wider text-white sm:text-6xl lg:text-7xl">
+            <h1 className="text-4xl font-bold tracking-wider text-white sm:text-6xl lg:text-7xl">
               4 Wheelz
               <br />
               Driving School
@@ -54,13 +54,13 @@ const Hero = () => {
             </p>
             <div className="mt-5 flex flex-col gap-5 sm:flex-row">
               <Link
-                href="bookings"
+                href="/bookings"
                 className="cursor-pointer self-start rounded-md border-2 border-primary bg-primary px-10 py-4 font-semibold text-white transition-all hover:-translate-y-2 hover:scale-105 md:text-lg"
               >
                 Book Now
               </Link>
               <Link
-                href="about"
+                href="/about"
                 className="cursor-pointer self-start rounded-md border-2 border-primary px-10 py-4 font-semibold text-primary transition-all hover:-translate-y-2 hover:scale-105 md:text-lg"
               >
                 Learn More

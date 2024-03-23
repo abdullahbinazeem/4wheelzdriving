@@ -23,7 +23,7 @@ const SecondaryHeader = ({ title }: SecondaryHeaderProps) => {
         </div>
         <div className="flex h-full flex-col justify-center">
           <Container className="pt-[10vh]">
-            <h1 className="text-5xl font-bold tracking-wider text-white sm:text-6xl lg:text-7xl">
+            <h1 className="whitespace-pre-wrap text-5xl font-semibold tracking-wider text-white sm:text-6xl lg:text-7xl">
               {title}
             </h1>
           </Container>
