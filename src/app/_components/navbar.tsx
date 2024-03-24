@@ -38,8 +38,8 @@ const Navbar = () => {
     <div className="relative">
       <div
         className={cn(
-          "absolute left-0  top-0 z-50  h-screen w-[50%] min-w-[300px] translate-x-[-101%] bg-primary transition-all duration-700 lg:hidden",
-          toggleBar ? "block translate-x-0" : "hidden",
+          "absolute left-0 top-0 z-50 block h-screen w-[50%] min-w-[300px] translate-x-[-101%] overflow-hidden bg-primary transition-all duration-700 lg:hidden",
+          toggleBar ? "translate-x-0" : "",
         )}
       >
         <div className="mt-10 flex flex-col gap-8 p-6">
