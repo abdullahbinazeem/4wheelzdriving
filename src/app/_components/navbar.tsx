@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Container from "@/components/container";
 
-import { Menu, X } from "lucide-react";
+import { Link2, Menu, Navigation2Icon, X } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -38,20 +38,24 @@ const Navbar = () => {
     <div className="relative">
       <div
         className={cn(
-          "absolute left-0  top-0 z-50 block h-screen w-[50%] min-w-[300px] translate-x-[-101%] bg-primary transition-all duration-1000 lg:hidden",
+          "absolute left-0  top-0 z-50 block h-screen w-[50%] min-w-[300px] translate-x-[-101%] bg-primary transition-all duration-700 lg:hidden",
           toggleBar ? "translate-x-0" : "",
         )}
       >
-        <div className="mt-10 flex flex-col gap-8 p-10">
+        <div className="mt-10 flex flex-col gap-8 p-6">
           {navItems.map((item) => (
             <Link
               key={item.name}
-              className="text-lg font-medium text-white transition-all hover:translate-x-[12.5%] hover:scale-125 xl:font-semibold"
+              className="group flex items-center gap-2 border-b border-slate-200 px-4 py-6 pb-2 text-lg  font-medium text-white transition-all hover:translate-x-[12.5%] hover:scale-125 xl:font-semibold"
               href={item.url}
               onClick={() => {
                 setToggleBar(false);
               }}
             >
+              <Navigation2Icon
+                className="aspect-square w-10 transition-all group-hover:rotate-90"
+                strokeWidth={1.5}
+              />
               {item.name}
             </Link>
           ))}
@@ -59,7 +63,7 @@ const Navbar = () => {
       </div>
       <div
         className={cn(
-          "absolute left-0 top-0 z-40 block h-screen w-full bg-black transition-all duration-1000 lg:hidden",
+          "absolute left-0 top-0 z-40 block h-screen w-full bg-black transition-all duration-700 lg:hidden",
           toggleBar ? "block opacity-80" : "hidden opacity-0",
         )}
       />
