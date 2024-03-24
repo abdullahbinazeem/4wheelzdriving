@@ -38,15 +38,15 @@ const Navbar = () => {
     <div className="relative">
       <div
         className={cn(
-          "absolute left-0  top-0 z-50 block h-screen w-[50%] min-w-[300px] translate-x-[-101%] bg-primary transition-all duration-500 lg:hidden",
+          "absolute left-0  top-0 z-50 block h-screen w-[50%] min-w-[300px] translate-x-[-101%] bg-primary transition-all duration-1000 lg:hidden",
           toggleBar ? "translate-x-0" : "",
         )}
       >
-        <div className="flex flex-col gap-8 p-10 ">
+        <div className="mt-10 flex flex-col gap-8 p-10">
           {navItems.map((item) => (
             <Link
               key={item.name}
-              className="text-xl font-medium text-white transition-all hover:translate-x-[12.5%] hover:scale-125 xl:font-semibold"
+              className="text-lg font-medium text-white transition-all hover:translate-x-[12.5%] hover:scale-125 xl:font-semibold"
               href={item.url}
               onClick={() => {
                 setToggleBar(false);
@@ -59,7 +59,7 @@ const Navbar = () => {
       </div>
       <div
         className={cn(
-          "absolute left-0 top-0 z-40 block h-screen w-full bg-black transition-all duration-500 lg:hidden",
+          "absolute left-0 top-0 z-40 block h-screen w-full bg-black transition-all duration-1000 lg:hidden",
           toggleBar ? "block opacity-80" : "hidden opacity-0",
         )}
       />
