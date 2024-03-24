@@ -74,10 +74,12 @@ const page = () => {
                 value={`item-${i + 1}`}
                 className="my-4 rounded-xl border-2 p-6 data-[state=open]:border-primary"
               >
-                <AccordionTrigger className="text-lg  data-[state=open]:text-primary">
+                <AccordionTrigger className="data-[state=open]:text-primary  md:text-lg">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="">{item.answer}</AccordionContent>
+                <AccordionContent className="text-xs md:text-sm">
+                  {item.answer}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

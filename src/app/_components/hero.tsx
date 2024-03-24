@@ -54,10 +54,10 @@ const Hero = () => {
             </p>
             <div className="mt-5 flex flex-col gap-5 sm:flex-row">
               <Link
-                href="/bookings"
+                href="/packages"
                 className="cursor-pointer self-start rounded-md border-2 border-primary bg-primary px-10 py-4 font-semibold text-white transition-all hover:-translate-y-2 hover:scale-105 md:text-lg"
               >
-                Book Now
+                Book Now!
               </Link>
               <Link
                 href="/about"
