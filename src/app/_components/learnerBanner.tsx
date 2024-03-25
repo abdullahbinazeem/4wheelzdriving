@@ -47,7 +47,7 @@ const LearnerBanner = () => {
               href="/packages"
               className="ml-2 mt-4 text-lg underline transition-all hover:translate-x-[12.5%] hover:scale-125 md:text-xl"
             >
-              Book Now
+              Find Lessons
             </Link>
           </ul>
         </div>

@@ -10,18 +10,21 @@ const suggestedService = [
     title: "Driving Lessons",
     description:
       "All lessons are 90 minutes long and includes pick up and drop off. Refer to our packages for additional details.",
+    callToAction: "",
   },
   {
     imageUrl: "/assets/icons/roadtest.svg",
     title: "Road Test",
     description:
       "Our Road Test Package includes 45 minutes warm up at either Mckenzie or Duncin ICBC. At a cost of $175. Students are responsible for all ICBC charges.",
+    callToAction: "",
   },
   {
     imageUrl: "/assets/icons/targetedpractice.svg",
     title: "Targeted Practices",
     description:
-      "In addition to all the packages, we understand that each student is different. Some may just want to polish on one or two practices. Either on Parallel Parking or Stall reverse parking. We designed this lesson for such students at a cost of $75. We are willing to work with you.",
+      "In addition to all the packages, some may just want to polish on one or two practices. Either on Parallel Parking or Stall reverse parking. We designed this lesson for such students at a cost of $75.",
+    callToAction: "",
   },
 ];
 
@@ -54,16 +57,16 @@ const Hero = () => {
             </p>
             <div className="mt-5 flex flex-col gap-5 sm:flex-row">
               <Link
-                href="/packages"
+                href="/bookings"
                 className="cursor-pointer self-start rounded-md border-2 border-primary bg-primary px-10 py-4 font-semibold text-white transition-all hover:-translate-y-2 hover:scale-105 md:text-lg"
               >
                 Book Now!
               </Link>
               <Link
-                href="/about"
+                href="/packages"
                 className="cursor-pointer self-start rounded-md border-2 border-primary px-10 py-4 font-semibold text-primary transition-all hover:-translate-y-2 hover:scale-105 md:text-lg"
               >
-                Learn More
+                Explore Packages
               </Link>
             </div>
           </div>
@@ -72,21 +75,29 @@ const Hero = () => {
             {suggestedService.map((item) => (
               <div
                 key={item.title}
-                className="rounded-md bg-white p-9 shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.05),_10px_10px_30px_4px_rgba(255,122,0,.05)]"
+                className="flex flex-col justify-between rounded-md bg-white p-9 shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.05),_10px_10px_30px_4px_rgba(255,122,0,.05)]"
               >
-                <Image
-                  src={item.imageUrl}
-                  alt="driving lessons"
-                  width={200}
-                  height={200}
-                  className="w-28 lg:w-32 "
-                ></Image>
-                <h1 className="mt-5 text-xl font-bold text-slate-800 after:bottom-0 after:my-4 after:block after:h-[3px] after:w-20 after:rounded-xl after:bg-primary lg:text-2xl">
-                  {item.title}
-                </h1>
-                <p className="shortener mt-7 text-sm font-light text-slate-500 lg:text-base">
-                  {item.description}
-                </p>
+                <div>
+                  <Image
+                    src={item.imageUrl}
+                    alt="driving lessons"
+                    width={200}
+                    height={200}
+                    className="w-20 lg:w-24 "
+                  ></Image>
+                  <h1 className="mt-8 text-lg font-medium text-slate-800 after:bottom-0 after:my-2 after:block after:h-[2px] after:w-20 after:rounded-xl after:bg-primary lg:text-xl">
+                    {item.title}
+                  </h1>
+                  <p className="shortener mt-5 text-sm font-light leading-relaxed text-slate-500 ">
+                    {item.description}
+                  </p>
+                </div>
+                <Link
+                  href={item.callToAction}
+                  className="mx-auto mt-6 w-[50%] rounded-sm bg-primary p-2 text-center text-white transition-all hover:-translate-y-2 hover:scale-105"
+                >
+                  Book
+                </Link>
               </div>
             ))}
           </div>

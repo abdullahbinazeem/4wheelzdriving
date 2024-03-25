@@ -14,8 +14,8 @@ const navItems = [
     url: "/",
   },
   {
-    name: `Driving Lessons`,
-    url: "/lessons",
+    name: `Bookings`,
+    url: "/bookings",
   },
   {
     name: "Packages",
