@@ -1,7 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { SubmitHandler, useForm } from "react-hook-form";
 import React, { useState } from "react";
+import BookingNav from "./bookingNav";
 
 enum STEPS {
   Service = 0,
@@ -9,7 +11,19 @@ enum STEPS {
   Details = 2,
 }
 
+type FormFields = {
+  Category: string;
+  Service: string;
+  Price: string;
+};
+
 const Bookings = () => {
+  const { register, handleSubmit } = useForm<FormFields>();
+
+  const onSubmit: SubmitHandler<FormFields> = (data) => {
+    console.log(data);
+  };
+
   const [step, setStep] = useState(STEPS.Service);
 
   const onBack = () => {
@@ -24,59 +38,25 @@ const Bookings = () => {
     }
   };
 
+  let formContent = null;
+
+  if (step == STEPS.Service) {
+    formContent = <div>Service Step</div>;
+  }
+
+  if (step == STEPS.Reservation) {
+    formContent = <div>Reserve a Seat</div>;
+  }
+
+  if (step == STEPS.Details) {
+    formContent = <div>Details Step</div>;
+  }
+
   return (
     <div className="mt-20">
       <h1 className="text-4xl font-medium">Schedule Driving Lesson</h1>
-      <div className="mt-8 flex w-full justify-between gap-2 ">
-        <div className="flex-1">
-          <p
-            className={cn(
-              "text-sm transition-all md:text-base",
-              step == STEPS.Service ? "text-primary" : "text-black",
-            )}
-          >
-            1. Service
-          </p>
-          <div
-            className={cn(
-              "mt-2 h-4 w-full rounded-l-xl transition-all",
-              step == STEPS.Service ? "bg-primary" : "bg-slate-200",
-            )}
-          />
-        </div>
-        <div className="flex-1">
-          <p
-            className={cn(
-              "text-sm transition-all md:text-base",
-              step == STEPS.Reservation ? "text-primary" : "text-black",
-            )}
-          >
-            2. Reservation
-          </p>
-          <div
-            className={cn(
-              "mt-2 h-4 w-full bg-primary transition-all",
-              step == STEPS.Reservation ? "bg-primary" : "bg-slate-200",
-            )}
-          />
-        </div>
-        <div className="flex-1">
-          <p
-            className={cn(
-              "text-sm transition-all md:text-base",
-              step == STEPS.Details ? "text-primary" : "text-black",
-            )}
-          >
-            3. Details
-          </p>
-          <div
-            className={cn(
-              "mt-2 h-4 w-full rounded-r-xl bg-primary transition-all",
-              step == STEPS.Details ? "bg-primary" : "bg-slate-200",
-            )}
-          />
-        </div>
-      </div>
+      <BookingNav step={step} />
+      <div>{formContent}</div>
       <div className="m-auto mt-10 flex justify-center gap-20">
         <div
           className={cn(
