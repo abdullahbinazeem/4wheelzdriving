@@ -3,7 +3,7 @@
 import Container from "@/components/container";
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 
 import Image from "next/image";
 
