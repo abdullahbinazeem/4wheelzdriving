@@ -116,7 +116,7 @@ const OpeningTimes = ({ scheduledDays }: OpeningTimesProps) => {
 
   function submit(values: z.infer<typeof formSchema>) {
     if (!values) {
-      toast.error("No values are selected");
+      toast.error("No values are selected.");
       return;
     }
 
