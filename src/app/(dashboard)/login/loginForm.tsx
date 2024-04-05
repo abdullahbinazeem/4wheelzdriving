@@ -13,7 +13,7 @@ export default async function loginForm(
 
   //  Send to our api route
   const response = await axios
-    .post("http://localhost:3000//api/login", {
+    .post("/api/login", {
       email,
       password,
     })
