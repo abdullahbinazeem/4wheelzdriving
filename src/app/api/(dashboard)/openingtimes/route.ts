@@ -6,8 +6,8 @@ export async function POST(request: Request) {
   const body = await request.json();
   const { days, toDate } = body;
 
-  days.forEach(async (day: DayType, i: number) => {
-    await prisma.scheduleDay.upsert({
+  const response = days.forEach(async (day: DayType, i: number) => {
+    return await prisma.scheduleDay.upsert({
       where: { dayOfWeek: i },
       update: {
         active: day.active,
@@ -42,5 +42,5 @@ export async function POST(request: Request) {
     });
   }
 
-  return Response.json({ message: "Updated succesfuly" });
+  return Response.json({ response });
 }
