@@ -5,9 +5,9 @@ import { Locate, Mail, Map, Phone } from "lucide-react";
 
 const ContactForm = () => {
   return (
-    <Container className="relative">
+    <div className="relative m-auto max-w-[1280px] px-0 md:px-10 ">
       <div className="flex flex-col gap-x-20 gap-y-20 py-28 lg:flex-row">
-        <div className="flex-1 basis-1">
+        <div className="flex-1 basis-1 px-6">
           <h2 className="text-lg tracking-wide  text-primary  lg:text-xl">
             Get in touch
           </h2>
@@ -35,7 +35,7 @@ const ContactForm = () => {
             </div>
           </div>
         </div>
-        <div className="relative flex-1 basis-1  rounded-3xl bg-[#FFFBF6]">
+        <div className="relative flex-1 basis-1  bg-[#fff3e0] md:rounded-xl">
           <form
             action="https://formsubmit.co/abdullahbinazeem06@gmail.com"
             method="POST"
@@ -102,7 +102,7 @@ const ContactForm = () => {
           </form>
         </div>
       </div>
-    </Container>
+    </div>
   );
 };
 

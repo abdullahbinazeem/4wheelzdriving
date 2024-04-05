@@ -43,7 +43,7 @@ const Hero = () => {
           />
         </div>
         <Container>
-          <div className="flex h-full flex-col justify-center gap-y-5 pt-20 lg:gap-y-8 lg:pt-[25vh]">
+          <div className="flex h-full flex-col justify-center gap-y-3 pt-20 lg:gap-y-6 lg:pt-[25vh]">
             <h2 className="relative text-lg font-semibold tracking-wider text-primary after:absolute after:left-[-220px] after:top-[50%] after:hidden after:h-[4px] after:w-[200px] after:rounded-full after:bg-primary sm:text-2xl lg:ml-10 lg:text-3xl after:lg:block">
               Experience The Art of Driving
             </h2>
@@ -55,16 +55,16 @@ const Hero = () => {
             <p className="font-light text-slate-300 sm:text-xl lg:text-2xl">
               Victoria, British Columbia
             </p>
-            <div className="mt-5 flex flex-col gap-5 sm:flex-row">
+            <div className="mt-5 flex w-[50%] min-w-[250px] flex-col gap-5 sm:w-full sm:flex-row">
               <Link
                 href="/bookings"
-                className="cursor-pointer self-start rounded-md border-2 border-primary bg-primary px-10 py-4 font-semibold text-white transition-all hover:-translate-y-2 hover:scale-105 md:text-lg"
+                className="cursor-pointer rounded-md  border-2 border-primary bg-primary px-10 py-4 font-semibold text-white transition-all hover:-translate-y-2 hover:scale-105 sm:self-stretch md:text-lg"
               >
                 Book Now!
               </Link>
               <Link
                 href="/packages"
-                className="cursor-pointer self-start rounded-md border-2 border-primary px-10 py-4 font-semibold text-primary transition-all hover:-translate-y-2 hover:scale-105 md:text-lg"
+                className="cursor-pointer  rounded-md border-2 border-primary px-10 py-4 font-semibold text-primary transition-all hover:-translate-y-2 hover:scale-105 sm:self-stretch md:text-lg"
               >
                 Explore Packages
               </Link>

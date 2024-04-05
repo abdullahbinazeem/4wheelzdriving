@@ -18,7 +18,11 @@ const page = () => {
             here.
           </Link>
         </p>
+
         <Bookings />
+        <h1 className="py-20 text-center text-5xl font-bold">
+          BUILDING IN PROCCESS...
+        </h1>
       </Container>
       <Footer />
     </div>
