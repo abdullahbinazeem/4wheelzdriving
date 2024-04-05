@@ -54,7 +54,7 @@ const Calendar = () => {
   };
 
   return (
-    <div className="mt-20">
+    <div className="mt-5">
       <div className="flex items-center justify-between">
         <p className="text-xl font-semibold">
           {format(firstDayOfMonth, "MMMM yyyy")}

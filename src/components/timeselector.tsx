@@ -45,7 +45,7 @@ const TimeSelector: FC<TimeSelectorProps> = ({
     >
       {({ open }) => (
         <>
-          <Listbox.Label className="block w-32 text-sm font-medium text-gray-700">
+          <Listbox.Label className="block w-32 text-xs font-medium text-gray-700">
             {type === "openTime" ? "Opening time" : "Closing time"}
           </Listbox.Label>
           <div className="relative mt-1">

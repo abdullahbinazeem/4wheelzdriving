@@ -36,14 +36,21 @@ model Appointment {
 
 model AvailableDays {
   id        String @id @default(auto()) @map("_id") @db.ObjectId
-  dateTime  DateTime 
-  day       String @unique
+  dateTime  DateTime @unique
   dayOfWeek Int // @see getDay() documentation, 0 for Sunday, 1 for Monday, ...
   
-  timings   Json[] @default([])
-  slots     DateTime[]
+  disabledTimes   Json[] @default([])
+  disabled        Boolean
   
   appointments Appointment[]
+}
 
+model ScheduleDay {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  dayOfWeek Int @unique
+
+  active        Boolean
+  openingTime   String
+  closingTime   String
 }
 
