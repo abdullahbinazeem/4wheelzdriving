@@ -191,15 +191,16 @@ const OpeningTimes = ({ scheduledDays }: OpeningTimesProps) => {
     setLoading(true);
 
     axios
-      .post("https://4wheelzdriving.vercel.app/api/openingtimes", {
+      .post("/api/openingtimes", {
         days,
         toDate: values.toDate,
       })
       .then(() => {
         toast.success("Updated opening/closing times");
       })
-      .catch(() => {
+      .catch((e) => {
         toast.error("Something went wrong.");
+        console.log(e);
       })
       .finally(() => {
         setLoading(false);
