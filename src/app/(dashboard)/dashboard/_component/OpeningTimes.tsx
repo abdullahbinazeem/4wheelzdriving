@@ -191,7 +191,7 @@ const OpeningTimes = ({ scheduledDays }: OpeningTimesProps) => {
     setLoading(true);
 
     axios
-      .post("/api/openingtimes", {
+      .post("https://4wheelzdriving.vercel.app/api/openingtimes", {
         days,
         toDate: values.toDate,
       })
