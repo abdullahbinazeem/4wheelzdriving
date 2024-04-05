@@ -11,7 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@hookform/resolvers": "^3.3.4",
-    "@prisma/client": "^5.11.0",
+    "@prisma/client": "^5.12.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
@@ -26,7 +26,6 @@
     "jose": "^5.2.3",
     "lucide-react": "^0.363.0",
     "next": "14.1.0",
-    "prisma": "^5.11.0",
     "react": "^18",
     "react-day-picker": "^8.10.0",
     "react-dom": "^18",
@@ -49,6 +48,7 @@
     "postcss": "^8",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "prisma": "^5.12.1",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
