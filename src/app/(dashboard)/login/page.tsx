@@ -1,3 +1,5 @@
+"use client";
+
 import Container from "@/components/container";
 import LoginPage from "./loginPage";
 
