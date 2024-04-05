@@ -28,10 +28,13 @@ const page = async () => {
         <p className="cursor-pointer">View Calendar</p>
         <OpeningTimes scheduledDays={scheduleDays} />
       </div>
-      <p className="mt-10 text-primary underline">
-        Calendar is updated till {format(days[days.length - 1].dateTime, "do")}{" "}
-        of {format(days[days.length - 1].dateTime, "MMMM yyyy")}
-      </p>
+      {days && (
+        <p className="mt-10 text-primary underline">
+          Calendar is updated till{" "}
+          {format(days[days?.length - 1]?.dateTime, "do")} of{" "}
+          {format(days[days.length - 1]?.dateTime, "MMMM yyyy")}
+        </p>
+      )}
       <Calendar />
     </Container>
   );
