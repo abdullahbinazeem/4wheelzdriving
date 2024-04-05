@@ -195,7 +195,8 @@ const OpeningTimes = ({ scheduledDays }: OpeningTimesProps) => {
         days,
         toDate: values.toDate,
       })
-      .then(() => {
+      .then((response) => {
+        console.log(response);
         toast.success("Updated opening/closing times");
       })
       .catch((e) => {
