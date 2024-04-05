@@ -35,6 +35,7 @@ export async function POST(request: Request) {
         update: {},
         create: {
           dateTime: day,
+          disabled: days[getDay(day)].active,
           dayOfWeek: getDay(day),
         },
       });
