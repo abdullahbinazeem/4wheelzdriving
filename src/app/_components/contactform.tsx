@@ -19,20 +19,28 @@ const ContactForm = () => {
             adipiscing tincidunt interdum tellus du.
           </p>
           <div className="mt-10 flex flex-col gap-8 text-slate-500">
-            <div className="flex items-center gap-4">
+            <a
+              className="flex items-center gap-4"
+              href="mailto:4wheelz@gmail.com"
+            >
               <Mail />
               <p>4wheelz@gmail.com</p>
-            </div>
-            <div className="flex items-center gap-4">
+            </a>
+            <a className="flex items-center gap-4" href="tel:250-884-8343">
               <Phone />
-              <p>(123)-456-7890</p>
-            </div>
-            <div className="flex items-center gap-4">
+              <p>(250)-884-8343</p>
+            </a>
+            <a
+              className="flex items-center gap-4"
+              href="https://maps.app.goo.gl/mAPAsg35fjPDbxU36"
+              target="_blank"
+            >
               <Map />
               <p>
-                794 Mcallister St <br /> San Francisco, 94102
+                1830 Island Hwy unit 105,
+                <br /> Victoria, BC V9B 1J2
               </p>
-            </div>
+            </a>
           </div>
         </div>
         <div className="relative flex-1 basis-1  bg-[#fff3e0] md:rounded-xl">

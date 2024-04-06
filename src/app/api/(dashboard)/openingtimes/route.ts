@@ -42,5 +42,22 @@ export async function POST(request: Request) {
     });
   }
 
+  const lastDays = await prisma.availableDays.findMany({
+    orderBy: {
+      dateTime: "asc",
+    },
+  });
+
+  const removeDates: Date[] = eachDayOfInterval({
+    start: add(toDate, { days: 1 }),
+    end: lastDays[lastDays.length - 1].dateTime,
+  });
+
+  console.log(removeDates);
+
+  removeDates.forEach(async (day) => {
+    await prisma.availableDays.delete({ where: { dateTime: day } });
+  });
+
   return Response.json({ response });
 }

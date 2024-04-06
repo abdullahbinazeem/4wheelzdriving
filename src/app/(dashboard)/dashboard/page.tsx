@@ -26,7 +26,10 @@ const page = async () => {
       <h1 className="text-2xl font-bold">Dashboard</h1>
       <div className="mt-2 flex gap-6 text-blue-400 underline">
         <p className="cursor-pointer">View Calendar</p>
-        <OpeningTimes scheduledDays={scheduleDays} />
+        <OpeningTimes
+          scheduledDays={scheduleDays}
+          lastDay={days[days?.length - 1]?.dateTime}
+        />
       </div>
       {days && (
         <p className="mt-10 text-primary underline">
@@ -35,7 +38,7 @@ const page = async () => {
           {format(days[days.length - 1]?.dateTime, "MMMM yyyy")}
         </p>
       )}
-      <Calendar />
+      <Calendar scheduleDays={scheduleDays} availableDays={days} />
     </Container>
   );
 };

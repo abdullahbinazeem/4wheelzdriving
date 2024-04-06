@@ -77,9 +77,10 @@ import getSlots from "@/lib/getSlots";
 
 interface OpeningTimesProps {
   scheduledDays: ScheduleDay[];
+  lastDay: Date;
 }
 
-const OpeningTimes = ({ scheduledDays }: OpeningTimesProps) => {
+const OpeningTimes = ({ scheduledDays, lastDay }: OpeningTimesProps) => {
   const router = useRouter();
 
   const [open, setOpen] = useState(false);
@@ -111,6 +112,7 @@ const OpeningTimes = ({ scheduledDays }: OpeningTimesProps) => {
       thursday: scheduledDays[4] || defaultDayValue,
       friday: scheduledDays[5] || defaultDayValue,
       saturday: scheduledDays[6] || defaultDayValue,
+      toDate: lastDay,
     },
   });
 
@@ -324,7 +326,7 @@ const OpeningTimes = ({ scheduledDays }: OpeningTimesProps) => {
                         mode="single"
                         selected={field.value}
                         onSelect={field.onChange}
-                        disabled={(date) => date < addDays(new Date(), 1)}
+                        disabled={(date) => date < new Date()}
                         initialFocus
                       />
                     </PopoverContent>
