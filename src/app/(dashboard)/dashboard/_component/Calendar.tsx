@@ -24,8 +24,11 @@ import {
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-import { AvailableDays } from "@prisma/client";
 import getSlots from "@/lib/getSlots";
+
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 interface CalendarProps {
   scheduleDays: {
@@ -72,6 +75,8 @@ type AvailabeDay = {
 };
 
 const Calendar = ({ scheduleDays, availableDays }: CalendarProps) => {
+  const router = useRouter();
+
   const [availableDay, setAvailableDay] = useState<AvailabeDay>();
   const [length, setLength] = useState(60);
   const [interval, setInterval] = useState(30);
@@ -120,6 +125,30 @@ const Calendar = ({ scheduleDays, availableDays }: CalendarProps) => {
     event.preventDefault();
     const firstDayOfNextMonth = add(firstDayOfMonth, { months: 1 });
     setCurrMonth(format(firstDayOfNextMonth, "MMM-yyyy"));
+  };
+
+  const submitAppointment = (slot: Date, availableDayId: string) => {
+    axios
+      .post(`/api/${availableDayId}/appointment`, {
+        name: "Test Appointment",
+        price: -321,
+        startTime: slot,
+        appointmentLength: length,
+      })
+      .then((response) => {
+        console.log(response);
+        toast.success(
+          "Booked appointment at time " + formatDate(slot, "h:mm aaa"),
+        );
+      })
+      .catch((e) => {
+        toast.error("Something went wrong.");
+        console.log(e);
+      })
+      .finally(() => {
+        router.refresh();
+        setAvailableDay(undefined);
+      });
   };
 
   return (
@@ -217,11 +246,7 @@ const Calendar = ({ scheduleDays, availableDays }: CalendarProps) => {
                       }),
                     );
                   }}
-                  disabled={
-                    isBefore(day, today) ||
-                    isToday(day) ||
-                    !scheduleDays[getDay(day)].active
-                  }
+                  disabled={isBefore(day, today)}
                   className={`flex h-8 w-8  items-center justify-center rounded-full font-semibold   ${
                     !isBefore(day, today) ? "text-gray-900" : "text-gray-400"
                   } ${!isToday(day) && !isBefore(day, today) && scheduleDays[getDay(day)].active && "hover:bg-blue-500 hover:text-white"} ${
@@ -238,97 +263,94 @@ const Calendar = ({ scheduleDays, availableDays }: CalendarProps) => {
       <div className="mt-20">
         {availableDay && (
           <div className=" flex flex-col gap-12">
-            <div>
-              <h1 className="mb-5 text-2xl font-semibold">
-                Bookings Avaliability:{" "}
-                {formatDate(availableDay.dateTime, "EEEE, d MMMM")}
-              </h1>
-              <div className="mb-8 flex gap-8">
-                <div>
-                  <p>Length Set:</p>
-                  <select
-                    id="length"
-                    name="length"
-                    value={length}
-                    onChange={(e) => setLength(parseInt(e.target.value))}
-                  >
-                    <option value={30}>30 Minutes</option>
-                    <option value={45}>45 Minutes</option>
-                    <option value={60}>60 Minutes</option>
-                    <option value={90}>90 Minutes</option>
-                  </select>
-                </div>
-                <div>
-                  <p>Interval Set:</p>
-                  <select
-                    id="interval"
-                    name="interval"
-                    value={interval}
-                    onChange={(e) => setInterval(parseInt(e.target.value))}
-                  >
-                    <option value={15}>15 minute interval</option>
-                    <option value={30}>30 minute interval</option>
-                    <option value={45}>45 minute interval</option>
-                    <option value={60}>60 minute interval</option>
-                  </select>
-                </div>
-              </div>
-              <div className="grid grid-cols-6 gap-5">
-                {getSlots(
-                  availableDay.dateTime,
-                  scheduleDays[availableDay?.dayOfWeek!].openingTime,
-                  scheduleDays[availableDay?.dayOfWeek!].closingTime,
-                  interval,
-                  length,
-                  availableDay.appointments.map((appointment) => {
-                    return {
-                      openingTime: appointment.startTime,
-                      closingTime: add(appointment.startTime, {
-                        minutes: appointment.appointmentLength,
-                      }),
-                    };
-                  }),
-                ).map((slot, i) => (
-                  <div
-                    onClick={() => {
-                      console.log(slot);
-                    }}
-                    className="mx-5 cursor-pointer border border-black bg-slate-100 p-5 text-center transition-all hover:border-primary hover:bg-[#FFF9F4] "
-                    key={i}
-                  >
-                    {formatDate(slot, "h:mm aaa")}
+            {!availableDay.disabled && (
+              <div>
+                <h1 className="mb-5 text-2xl font-semibold">
+                  Bookings Avaliability:{" "}
+                  {formatDate(availableDay.dateTime, "EEEE, d MMMM")}
+                </h1>
+                <div className="mb-8 flex gap-8">
+                  <div>
+                    <p>Length Set:</p>
+                    <select
+                      id="length"
+                      name="length"
+                      value={length}
+                      onChange={(e) => setLength(parseInt(e.target.value))}
+                    >
+                      <option value={30}>30 Minutes</option>
+                      <option value={45}>45 Minutes</option>
+                      <option value={60}>60 Minutes</option>
+                      <option value={90}>90 Minutes</option>
+                    </select>
                   </div>
-                ))}
+                  <div>
+                    <p>Interval Set:</p>
+                    <select
+                      id="interval"
+                      name="interval"
+                      value={interval}
+                      onChange={(e) => setInterval(parseInt(e.target.value))}
+                    >
+                      <option value={15}>15 minute interval</option>
+                      <option value={30}>30 minute interval</option>
+                      <option value={45}>45 minute interval</option>
+                      <option value={60}>60 minute interval</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="grid grid-cols-6 gap-5">
+                  {getSlots(
+                    availableDay.dateTime,
+                    scheduleDays[availableDay?.dayOfWeek!].openingTime,
+                    scheduleDays[availableDay?.dayOfWeek!].closingTime,
+                    interval,
+                    length,
+                    availableDay.appointments.map((appointment) => {
+                      return {
+                        openingTime: appointment.startTime,
+                        closingTime: add(appointment.startTime, {
+                          minutes: appointment.appointmentLength,
+                        }),
+                      };
+                    }),
+                  ).map((slot, i) => (
+                    <div
+                      onClick={() => {
+                        submitAppointment(slot, availableDay.id);
+                      }}
+                      className="mx-5 cursor-pointer border border-black bg-slate-100 p-5 text-center transition-all hover:border-primary hover:bg-[#FFF9F4] "
+                      key={i}
+                    >
+                      {formatDate(slot, "h:mm aaa")}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             <div>
               <h1 className="mb-5 text-2xl font-semibold">
                 Current Bookings:{" "}
                 {formatDate(availableDay.dateTime, "EEEE, d MMMM")}
               </h1>
-              <div>
+              <div className="flex flex-col gap-y-8">
                 {availableDay.appointments.length ? (
                   availableDay.appointments.map((appointment) => (
                     <div
                       key={appointment.id}
-                      className="rounded-lg bg-slate-100 py-6 pl-4"
+                      className="rounded-lg bg-blue-50 py-6 pl-4"
                     >
                       <div className="flex items-center gap-8">
                         <h1 className="text-xl text-black">
                           {appointment.name}
                         </h1>
                         <div className="flex gap-2">
-                          <p>
-                            {formatDate(
-                              add(appointment.startTime, { minutes: 720 }),
-                              "h:mm aaa",
-                            )}
-                          </p>{" "}
+                          <p>{formatDate(appointment.startTime, "h:mm aaa")}</p>{" "}
                           -
                           <p>
                             {formatDate(
                               add(appointment.startTime, {
-                                minutes: appointment.appointmentLength + 720,
+                                minutes: appointment.appointmentLength,
                               }),
                               "h:mm aaa",
                             )}
@@ -336,7 +358,7 @@ const Calendar = ({ scheduleDays, availableDays }: CalendarProps) => {
                         </div>
                       </div>
                       <h1 className="mt-4 text-xl">${appointment.price}</h1>
-                      <p className="mt-4 text-gray-500">
+                      <p className="mt-4 text-gray-400">
                         Booked on:{" "}
                         {formatDate(appointment.createdAt, "EEEE, d MMMM")}
                       </p>

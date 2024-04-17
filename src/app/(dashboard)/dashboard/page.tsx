@@ -20,7 +20,11 @@ const page = async () => {
       dateTime: "asc",
     },
     include: {
-      appointments: true,
+      appointments: {
+        orderBy: {
+          startTime: "asc",
+        },
+      },
     },
   });
 
