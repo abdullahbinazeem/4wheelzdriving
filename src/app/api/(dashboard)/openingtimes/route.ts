@@ -1,6 +1,13 @@
 import prisma from "@/lib/db";
 import { DayType } from "@/types";
-import { add, eachDayOfInterval, getDay } from "date-fns";
+import {
+  add,
+  eachDayOfInterval,
+  getDay,
+  isAfter,
+  isSameDay,
+  sub,
+} from "date-fns";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -32,10 +39,13 @@ export async function POST(request: Request) {
     dates.forEach(async (day) => {
       await prisma.availableDays.upsert({
         where: { dateTime: day },
-        update: {},
+        update: {
+          dateTime: day,
+          disabled: !days[getDay(day)].active,
+        },
         create: {
           dateTime: day,
-          disabled: days[getDay(day)].active,
+          disabled: !days[getDay(day)].active,
           dayOfWeek: getDay(day),
         },
       });
@@ -44,20 +54,27 @@ export async function POST(request: Request) {
 
   const lastDays = await prisma.availableDays.findMany({
     orderBy: {
-      dateTime: "asc",
+      dateTime: "desc",
     },
   });
 
-  const removeDates: Date[] = eachDayOfInterval({
-    start: add(toDate, { days: 1 }),
-    end: lastDays[lastDays.length - 1].dateTime,
-  });
+  if (
+    !isSameDay(lastDays[0].dateTime, toDate) &&
+    !isAfter(toDate, lastDays[0].dateTime)
+  ) {
+    const removeDates: Date[] = eachDayOfInterval({
+      start: add(toDate, { days: 1 }),
+      end: lastDays[0].dateTime,
+    });
 
-  console.log(removeDates);
-
-  removeDates.forEach(async (day) => {
-    await prisma.availableDays.delete({ where: { dateTime: day } });
-  });
+    if (removeDates) {
+      removeDates.forEach(async (day, i) => {
+        await prisma.availableDays.deleteMany({ where: { dateTime: day } });
+      });
+    }
+  } else {
+    console.log("same day");
+  }
 
   return Response.json({ response });
 }

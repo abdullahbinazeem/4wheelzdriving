@@ -30,7 +30,7 @@ export default function getSlots(
 
   const slots: Date[] = [];
 
-  if (!occupiedTimes) {
+  if (!occupiedTimes?.length) {
     while (startingDate <= sub(endingDate, { minutes: length })) {
       slots.push(startingDate);
       startingDate = add(startingDate, {

@@ -52,14 +52,14 @@ const Footer = () => {
         </div>
         <div className="h-[1px] w-full bg-slate-400" />
         <div className="m-auto text-center text-sm font-light text-slate-400 sm:text-base">
-          Copyright © 2024{" "}
+          Copyright © 2024 4 Wheel Driving. All Rights Reserved.
+          <br />
           <Link
             href="https://xaama.tech/developments"
             className="underline transition-all hover:text-black"
           >
-            Xamaa Technlogies Ltd™
+            Built By Xamaa Technlogies Ltd™
           </Link>
-          . All Rights Reserved.
         </div>
       </div>
     </Container>

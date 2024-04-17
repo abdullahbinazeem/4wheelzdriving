@@ -19,6 +19,9 @@ const page = async () => {
     orderBy: {
       dateTime: "asc",
     },
+    include: {
+      appointments: true,
+    },
   });
 
   return (
