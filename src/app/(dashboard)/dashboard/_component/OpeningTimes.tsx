@@ -73,11 +73,10 @@ const formSchema = z.object({
 });
 
 import type { ScheduleDay } from "@prisma/client";
-import getSlots from "@/lib/getSlots";
 
 interface OpeningTimesProps {
   scheduledDays: ScheduleDay[];
-  lastDay: Date;
+  lastDay?: Date;
 }
 
 const OpeningTimes = ({ scheduledDays, lastDay }: OpeningTimesProps) => {
@@ -112,7 +111,7 @@ const OpeningTimes = ({ scheduledDays, lastDay }: OpeningTimesProps) => {
       thursday: scheduledDays[4] || defaultDayValue,
       friday: scheduledDays[5] || defaultDayValue,
       saturday: scheduledDays[6] || defaultDayValue,
-      toDate: lastDay,
+      toDate: lastDay || undefined,
     },
   });
 

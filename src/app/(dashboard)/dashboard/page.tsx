@@ -32,20 +32,28 @@ const page = async () => {
     <Container className="grainy min-h-screen pt-20">
       <h1 className="text-2xl font-bold">Dashboard</h1>
       <div className="mt-2 flex gap-6 text-blue-400 underline">
-        <p className="cursor-pointer">View Calendar</p>
+        <p className="cursor-pointer">Edit Calendar</p>
         <OpeningTimes
           scheduledDays={scheduleDays}
-          lastDay={days[days?.length - 1]?.dateTime}
+          lastDay={days[days?.length - 1]?.dateTime || undefined}
         />
       </div>
-      {days && (
+      {days.length ? (
         <p className="mt-10 text-primary underline">
           Calendar is updated till{" "}
           {format(days[days?.length - 1]?.dateTime, "do")} of{" "}
           {format(days[days.length - 1]?.dateTime, "MMMM yyyy")}
         </p>
+      ) : (
+        <p className="my-6">Calendar is not yet set.</p>
       )}
-      <Calendar scheduleDays={scheduleDays} availableDays={days} />
+      {scheduleDays.length && days.length ? (
+        <Calendar scheduleDays={scheduleDays} availableDays={days} />
+      ) : (
+        <p className="text-xl text-gray-700">
+          Calendar waiting for schedule......
+        </p>
+      )}
     </Container>
   );
 };
